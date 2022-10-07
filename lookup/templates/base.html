@@ -4,6 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
+    <style>
+      .good {
+        background-color: #0C0;
+        font-weight:600;
+      }
+      .moderate {
+        background-color: #FFFF00;
+        font-weight:600;
+      }
+      .usg {
+        background-color: #FF9900;
+        font-weight:600;
+      }
+      .unhealthy {
+        background-color: #FF0000;
+        color: #FFF;
+        font-weight:600;
+      }
+      .veryunhealthy {
+        background-color: #990066;
+        color: #FFF;
+        font-weight:600;
+      }
+      .hazardous {
+        background-color: #660000;
+        color: #FFF;
+        font-weight:600;
+      }
+    </style>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
   <body>
@@ -19,9 +49,10 @@
                 <a class="nav-link" href="{% url 'about' %}">About Me</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+            <form action="{% url 'home' %}" class="d-flex" role="search" method="POST">
+              {% csrf_token %}
+              <input class="form-control me-2" type="search" placeholder="Enter Zipcode" aria-label="Search" name="zipcode">
+              <button class="btn btn-outline-success" type="submit">Lookup</button>
             </form>
           </div>
         </div>
